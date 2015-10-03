@@ -27,14 +27,11 @@ fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
   if (~file.indexOf('.js')) require(__dirname + '/app/models/' + file);
 });
 
-// Bootstrap passport config
-require('./config/passport')(passport, config);
 
-// Bootstrap application settings
 require('./config/express')(app, passport);
 
-// Bootstrap routes
-require('./config/routes')(app, passport);
+
+require('./app/routes')(app);
 
 app.listen(port);
 console.log('Express app started on port ' + port);

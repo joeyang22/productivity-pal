@@ -4,15 +4,30 @@
  */
 
 var mongoose = require('mongoose');
-var home = require('home');
-
+var path = require('path');
 /**
  * Expose
  */
 
-module.exports = function (app, passport) {
+var User = require('./models/user')
 
-  app.get('/', home.index);
+module.exports = function (app) {
+
+  app.get('*', function(req,res){
+    res.sendFile(path.join(__dirname, '../public/views', 'index.html'));
+  }); 
+    
+  app.get('/api/user',function(req,res){
+    User.find(function(err,users){
+      if (err)
+        res.send(err)
+
+      res.json(users)
+    })
+
+  });
+
+
 
   /**
    * Error handling
