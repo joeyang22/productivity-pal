@@ -12,6 +12,11 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
         .when('/user', {
             templateUrl: 'views/user.html',
             controller: 'UserController'
+        })
+
+        .when('/task',{
+          templateUrl: 'view/task.html',
+          controller: 'TaskController'
         });
 
     $locationProvider.html5Mode(true);

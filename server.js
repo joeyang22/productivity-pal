@@ -6,7 +6,6 @@
 var fs = require('fs');
 var express = require('express');
 var mongoose = require('mongoose');
-var passport = require('passport');
 var config = require('config');
 
 var app = express();
@@ -28,7 +27,7 @@ fs.readdirSync(__dirname + '/app/models').forEach(function (file) {
 });
 
 
-require('./config/express')(app, passport);
+require('./config/express')(app);
 
 
 require('./app/routes')(app);
